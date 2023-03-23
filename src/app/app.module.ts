@@ -5,11 +5,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { FormComponent } from './form/form.component';
+import { TableComponent } from './table/table.component';
+import { SurveyComponent } from './survey/survey.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
+    FormComponent,
+    TableComponent,
+    SurveyComponent,
   ],
   imports: [
     BrowserModule,
