@@ -8,22 +8,70 @@ p-card {
   .p-card {
     border-radius: 10px;
   }
-  .p-button{
+
+  .p-button {
     border-radius: 6px;
   }
+
+  .p-inputtext {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  .p-password,
+  .p-dropdown {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 5px;
+  }
+
+  .p-calendar {
+    width: 100%;
+  }
+}
+
+.flex-center {
+  //讓子元素自動佈局
+  display: flex;
+  //將子元素在容器的垂直方向居中對齊
+  align-items: center;
+}
+
+.ml-80 {
+  margin-left: 80%;
+}
+
+p-checkbox {
+  //checkbox元件之間的間距
+  margin-left: 10px;
+  //框框跟label之間的間距
+  margin-right: 5px;
+}
+
+p-radioButton {
+  //radioButton元件之間的間距
+  margin-left: 10px;
+  //框框跟label之間的間距
+  margin-right: 5px;
 }
 
 p-button,
 button {
   margin-right: 5px;
-  border-radius: 10px;
+}
+
+label {
+  margin-top: 10px;
 }
 
 input {
   width: 100%;
   border-radius: 6px;
-  //上、右、下、左
-  margin: 5px 0 20px 0px;
+}
+
+textarea {
+  width: 100%;
+
 }
 
 h3 {
@@ -31,28 +79,4 @@ h3 {
   font-weight: bold;
   //上、右、下、左
   margin: 0 0 10px 0;
-}
-
-//使網頁內容置中
-.container {
-  margin: 0 auto;
-  margin-top: 5px;
-  padding: 0 15px;
-  width: 1200px;
-  max-width: 100%;
-}
-
-//display: flex將元素設置為flex容器，flex-direction: row將子元素排列在同一行上，align-items: center將子元素垂直居中對齊。
-.radio-buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 3%;
-}
-
-.p-checkbox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 8%;
 }

@@ -1,0 +1,207 @@
+<div class="container">
+  <p-card>
+    <h3>問卷</h3>
+    <p-divider></p-divider>
+    <div class="row">
+      <div class="col-6">
+        <div class="flex flex-column gap-2">
+          <label>姓名</label>
+          <input pInputText>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="flex flex-column gap-2">
+          <label>手機</label>
+          <input type="phone" pInputText>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="flex flex-column gap-2">
+          <label>密碼</label>
+          <p-password></p-password>
+        </div>
+      </div>
+      <!--checkbox要加value才能勾選-->
+      <div class="col-6 flex-center">
+        <div class="flex align-items-center gap-1">
+          <p-checkbox value="Angular"></p-checkbox>
+          <label>Angular</label>
+        </div>
+        <div class="flex align-items-center gap-1">
+          <p-checkbox value="Bonita"></p-checkbox>
+          <label>Bonita</label>
+        </div>
+        <div class="flex align-items-center gap-1">
+          <p-checkbox value="Database"></p-checkbox>
+          <label>Database</label>
+        </div>
+        <div class="flex align-items-center gap-1">
+          <p-checkbox value="Golang"></p-checkbox>
+          <label>Golang</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="flex flex-column gap-2">
+          <label>確認密碼</label>
+          <p-password></p-password>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="flex flex-column gap-2">
+          <label>電子郵件</label>
+          <input type="email" pInputText>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="flex flex-column gap-2">
+          <label>城市</label>
+          <p-dropdown [options]="cities" optionLabel="name"></p-dropdown>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="flex flex-column gap-2">
+          <label>職業</label>
+          <p-dropdown [options]="jobs" optionLabel="job"></p-dropdown>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="flex flex-column gap-2">
+          <label>城市</label>
+          <p-calendar [showIcon]="true"></p-calendar>
+        </div>
+      </div>
+      <div class="col-6">
+        <label>性別</label>
+        <div class="flex-center">
+          <div class="flex align-items-center">
+            <p-radioButton [(ngModel)]="gender" value="male"></p-radioButton>
+            <label>男</label>
+          </div>
+          <div class="flex align-items-center">
+            <p-radioButton [(ngModel)]="gender" value="female"></p-radioButton>
+            <label>女</label>
+          </div>
+          <div class="flex align-items-center">
+            <p-radioButton [(ngModel)]="gender" value="other"></p-radioButton>
+            <label>其他</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="flex flex-column gap-2">
+          <label>問題 / 評論</label>
+          <textarea pInputTextarea></textarea>
+        </div>
+      </div>
+      <div class="col-6 flex-center">
+        <p-button class="ml-80" label="送出"></p-button>
+      </div>
+    </div>
+  </p-card>
+</div>
+<!-- <div class="container">
+  <p-card>
+    <h3>問卷</h3>
+    <p-divider></p-divider>
+    <div class="row">
+      <div class="col-6">
+        <div class="field">
+          <label>姓名</label>
+          <input pInputText>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="field">
+          <label>手機</label>
+          <input pInputText>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="field">
+          <label>密碼</label>
+          <input type="password" pPassword />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="p-checkbox">
+          <p-checkbox name="groupname" value="val1" label="Angular"></p-checkbox>
+          <p-checkbox name="groupname" value="val2" label="bonita" [style]="{'margin-left':'15px'}"></p-checkbox>
+          <p-checkbox name="groupname" value="val3" label="database" [style]="{'margin-left':'15px'}"></p-checkbox>
+          <p-checkbox name="groupname" value="val3" label="golang" [style]="{'margin-left':'15px'}"></p-checkbox>
+
+          <div class="flex align-items-center gap-1">
+            <p-checkbox name="group1" value="New York"inputId="ny"></p-checkbox>
+            <label for="ny">New York</label>
+          </div>
+
+          <div class="flex align-items-center gap-1">
+            <p-checkbox name="group1" value="San Francisco"inputId="sf"></p-checkbox>
+            <label for="sf">San Francisco</label>
+          </div>
+
+          <div class="flex align-items-center gap-1">
+            <p-checkbox name="group1" value="Los Angeles"inputId="la"></p-checkbox>
+            <label for="la">Los Angeles</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="field">
+          <label>確認密碼</label>
+          <input type="password" pPassword />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="field">
+          <label>E-mail</label>
+          <input id="email1" type="email" pInputText />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="field">
+          <label>城市</label>
+          <p-dropdown [options]="cities" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="field">
+          <label>職業</label>
+          <p-dropdown [options]="jobs" optionLabel="job" [style]="{'width':'100%'}"></p-dropdown>
+        </div>
+      </div>
+      <div class="col-6" [style]="{'margin-top':'15px'}">
+        <div class="field">
+          <label for="icon">填寫日期</label>
+          <p-calendar [showIcon]="true" inputId="icon" [style]="{'width':'100%'}"></p-calendar>
+        </div>
+      </div>
+      <div class="col-6" [style]="{'margin-top':'20px'}">
+        <label>性別</label>
+        <div class="radio-buttons">
+          <div class="flex align-items-center">
+            <p-radioButton name="gender" value="man" [(ngModel)]="gender" inputId="man" label="男"></p-radioButton>
+          </div>
+          <div class="flex align-items-center">
+            <p-radioButton name="gender" value="female" [(ngModel)]="gender" inputId="female" label="女"
+              [style]="{'margin-left':'15px'}"></p-radioButton>
+          </div>
+          <div class="flex align-items-center">
+            <p-radioButton name="gender" value="else" [(ngModel)]="gender" inputId="else" label="其他"
+              [style]="{'margin-left':'15px'}"></p-radioButton>
+          </div>
+        </div>
+      </div>
+      <div class="col-6" [style]="{'margin-top':'20px'}">
+        <div class="field">
+          <label>問題/評論</label>
+          <textarea rows="2" cols="69" pInputTextarea></textarea>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="field" [style]="{'margin-top':'10%'}">
+          <p-button label="送出" [style]="{'margin-left':'80%'}"></p-button>
+        </div>
+      </div>
+    </div>
+  </p-card>
+</div> -->
