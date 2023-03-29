@@ -28,6 +28,19 @@ p-card {
   .p-calendar {
     width: 100%;
   }
+
+  .p-dialog {
+    width: 40%;
+    height: 50%;
+
+    .p-dialog .p-dialog-header {
+      border-top-right-radius: 10px;
+    }
+
+    .p-dialog .p-dialog-content:last-of-type {
+      border-bottom-right-radius: 10px;
+    }
+  }
 }
 
 .flex-center {
@@ -39,6 +52,19 @@ p-card {
 
 .ml-80 {
   margin-left: 80%;
+}
+
+//對dt及dd元件進行樣式修改
+dt,
+dd {
+  //去掉粗體
+  font-weight: normal;
+  //使dt與dd在同一行
+  display: inline;
+  //邊界設為0
+  margin: 0;
+  //字型大小
+  font-size: 18px;
 }
 
 p-checkbox {

@@ -15,6 +15,8 @@ interface student {
 })
 export class TableComponent {
   student: student[] = [];
+  edit: boolean = false;
+  test: string = "test";
   ngOnInit(): void {
     this.student = [
       { position: 1, name: 'Rose', height: 178, weight: 43 },
@@ -32,5 +34,19 @@ export class TableComponent {
       { position: 13, name: 'Wendy', height: 150, weight: 45 },
       { position: 14, name: 'Rita', height: 158, weight: 50 },
     ]
+    // console.log("student: " + JSON.stringify(this.student))
+  }
+  data: any = [{
+    position: '',
+    name: '',
+    height: '',
+    weight: ''
+  }]
+  showDialog(student: any): void {
+    this.data = student;
+    // console.log("student: " + student);
+    console.log("student: " + JSON.stringify(student));
+    console.log("student.position: " + this.data.position);
+    this.edit = true;
   }
 }

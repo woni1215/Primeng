@@ -2,24 +2,27 @@
   <p-card>
     <h3>學生資料表</h3>
     <p-divider></p-divider>
-    <p-table [value]="student">
+    <p-table [value]="student" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 15]">
       <ng-template pTemplate="header">
-          <tr>
-              <th>Code</th>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Quantity</th>
-          </tr>
+        <tr>
+          <th>編號</th>
+          <th>姓名</th>
+          <th>身高</th>
+          <th>體重</th>
+          <th>編輯</th>
+        </tr>
       </ng-template>
       <ng-template pTemplate="body" let-student>
-          <tr>
-              <td>{{ student.position }}</td>
-              <td>{{ student.name }}</td>
-              <td>{{ student.category }}</td>
-              <td>{{ student.quantity }}</td>
-          </tr>
+        <tr>
+          <td>{{ student.position }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.height }}</td>
+          <td>{{ student.weight }}</td>
+          <td><p-button icon="pi pi-pencil" (click)="showDialog(student)"
+              styleClass="p-button-rounded p-button-secondary p-button-outlined"></p-button></td>
+        </tr>
       </ng-template>
-  </p-table>
+    </p-table>
   </p-card>
 </div>
 <div class="container">
@@ -29,8 +32,8 @@
     <p-table [value]="student">
       <ng-template pTemplate="header">
         <tr>
-          <!-- <th pSortableColumn="position">編號<p-sortIcon></p-sortIcon></th> -->
-          <th>編號<p-sortIcon></p-sortIcon></th>
+          <th pSortableColumn="position">編號<p-sortIcon field="position"></p-sortIcon></th>
+          <!-- <th>編號<p-sortIcon></p-sortIcon></th> -->
           <th>姓名</th>
           <th>身高</th>
           <th>體重</th>
@@ -47,3 +50,37 @@
     </p-table>
   </p-card>
 </div>
+<!--Dialog-->
+<p-dialog [(visible)]="edit" header="編輯">
+  <div class="row">
+    <div class="col-6 flex-center">
+      <dt>編號：</dt>
+      <!-- <dd>{{test}}</dd> -->
+      <dd>{{data.position}}</dd>
+    </div>
+    <div class="col-6">
+      <div class="flex flex-column gap-2">
+        <label>姓名</label>
+        <!-- <input [(ngModel)]="test" pInputText> -->
+        <input [(ngModel)]="data.name" pInputText>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="flex flex-column gap-2">
+        <label>身高</label>
+        <input [(ngModel)]="data.height" pInputText>
+      </div>
+
+
+
+
+
+    </div>
+    <div class="col-6">
+      <div class="flex flex-column gap-2">
+        <label>體重</label>
+        <input [(ngModel)]="data.weight" pInputText>
+      </div>
+    </div>
+  </div>
+</p-dialog>
