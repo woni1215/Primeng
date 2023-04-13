@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+import { ApiService } from '../api/api.service';
+import { LazyLoadEvent } from 'primeng/api';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 //先定義物件類別
 interface student {
@@ -13,11 +17,32 @@ interface student {
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent {
+export class TableComponent implements OnInit {
   student: student[] = [];
   edit: boolean = false;
-  test: string = "test";
+  visible: boolean = false;
+  // test: string = "test";
+  test: string = "123abd";
+  post_form: FormGroup;
+
+  constructor(
+    private HttpApi: ApiService,
+    private fb: FormBuilder
+  ) {
+    this.post_form = this.fb.group({
+      //必填
+      userId: ['', [Validators.required]],
+      title: [''],
+      body: [''],
+    });
+  }
+
+  apiData!: ApiService[];
+  postData!: ApiService[];
+
   ngOnInit(): void {
+    // this.getAll()
+    this.post()
     this.student = [
       { position: 1, name: 'Rose', height: 178, weight: 43 },
       { position: 2, name: 'Benny', height: 156, weight: 90 },
@@ -36,17 +61,77 @@ export class TableComponent {
     ]
     // console.log("student: " + JSON.stringify(this.student))
   }
+
   data: any = [{
     position: '',
     name: '',
     height: '',
     weight: ''
   }]
+
+  // getAll() {
+  //   this.HttpApi.getAllRequest().subscribe(request => {
+  //     this.apiData = request;
+  //     console.log(this.apiData);
+  //   });
+  // }
+
+  loadPostsLazy(event: LazyLoadEvent) {
+    const page = (event.first! / event.rows!) + 1;
+    this.HttpApi.getAllRequest(page).subscribe(request => {
+      this.apiData = request;
+      console.log(this.apiData);
+    });
+  }
+
+  post(): void {
+    let body = {
+      title: 1,
+      body: 1,
+      userId: 1
+    }
+    this.HttpApi.postRequest(body)
+      .subscribe(request => {
+        this.postData = request
+        console.log(this.postData)
+      })
+  }
+
   showDialog(student: any): void {
     this.data = student;
-    // console.log("student: " + student);
+    this.visible = true;
+    console.log("student: " + JSON.stringify(student))
+  }
+
+  confirm(): void {
+    this.visible = false;
+    Swal.fire({
+      icon: 'success',
+      title: '儲存完畢!',
+    })
+  }
+
+  dataTest: any = [{
+    position: '',
+    name: '',
+    height: '',
+    weight: ''
+  }]
+
+  showDialogTest(student: any): void {
+    this.dataTest = student;
     console.log("student: " + JSON.stringify(student));
-    console.log("student.position: " + this.data.position);
+    // console.log("student: " + JSON.stringify(student));
+    console.log("student.position: " + student.position);
+    // console.log("student.position: " + this.dataTest.position);
     this.edit = true;
+  }
+
+  confirmTest(): void {
+    this.edit = false;
+    Swal.fire({
+      icon: 'success',
+      title: '已儲存'
+    })
   }
 }
